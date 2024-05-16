@@ -1,0 +1,22 @@
+#20. Valid Parentheses
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        stringDict = {
+            ")":"(",
+            "}":"{",
+            "]": "["
+        }
+        stack = []
+        for char in s:
+            if char in stringDict:#this is for checking closing brackets, i.e Keys in dict
+                if stack and stack[-1] == stringDict[char]:# check if stack last element contain is opening bracket
+                    stack.pop()
+                else:
+                    return False
+            else:# if its opening bracket from given input append it stack
+                stack.append(char)
+        return True if not stack else False # return True if stack is empty
