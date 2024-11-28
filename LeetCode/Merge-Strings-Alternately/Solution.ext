@@ -1,6 +1,17 @@
-Input: word1 = "abc", word2 = "pqr"
-Output: "apbqcr"
-Explanation: The merged string will be merged as so:
-word1:  a   b   c
-word2:    p   q   r
-merged: a p b q c r
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+      #Two pointer Arpproach i and j, Timple complexty is O(n+m) because we have 2 words 
+      i,j = 0 , 0
+      result = []
+      while i < len(word1) and j < len(word2):
+        result.append(word1[i])
+        result.append(word2[j])
+        #increment pointer
+        i += 1
+        j += 1
+      print("i and j", i , j)
+      result.append(word1[i:])# should append the reamining string
+      result.append(word2[i:])
+      return "".join(result)   
+
+                
